@@ -16,3 +16,4 @@ libraryDependencies += "com.rbmhtechnology" %% "eventuate-log-cassandra" % "0.8.
 
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+

@@ -2,7 +2,7 @@ package election.step1.actor
 
 import akka.actor.ActorRef
 import com.rbmhtechnology.eventuate.EventsourcedView
-import election.step1.commands.Step1.GetWinner
+import election.step1.commands.Step1.{GetWinner, GetWinnerResponse}
 import election.step1.domain.VoteRegistry
 import election.step1.events.Voted
 
@@ -15,11 +15,11 @@ class TallyActor(val eventLog: ActorRef) extends EventsourcedView {
 
   def onCommand: Receive = {
     case GetWinner() =>
-      ???
+      sender() ! GetWinnerResponse(registry.winner)
   }
 
   def onEvent: Receive = {
     case Voted(candidate) =>
-      ???
+      registry = registry.withVote(candidate)
   }
 }
